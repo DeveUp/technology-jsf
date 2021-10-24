@@ -2,6 +2,9 @@ package com.deveup.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.deveup.util.DeveupValidate;
+
 import java.util.Date;
 
 
@@ -27,6 +30,26 @@ public class User implements Serializable {
 	private String photo;
 
 	public User() {
+	}
+	
+	public String validateLogin() {
+		String message = null;
+		if(!DeveupValidate.isChain(mail)) {
+			message = "El campo email es obligatorio.";
+		}else {
+			if(!DeveupValidate.isEmail(mail)) {
+				message = "El campo email no cumple para ser un email.";
+			}
+		}
+		if(!DeveupValidate.isChain(password)) {
+			message = "El campo clave es obligatorio.";
+		}else {
+			if(password.length() > 3) {
+				message = "El campo clave debe tener mas de 3 caracteres.";
+			}
+		}
+		
+		return message;
 	}
 
 	public int getId() {
