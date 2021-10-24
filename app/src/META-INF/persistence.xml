@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="app">
 		<class>com.deveup.entity.User</class>
+
+		<!-- -->
+		<!-- Properties -->
+		<!-- -->
+		<properties>
+
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/jsf" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+
+			<!-- -->
+			<!-- DB Dialect -->
+			<!-- -->
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MariaDB53Dialect" />
+
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.enable_lazy_load_no_trans"
+				value="true" />
+
+			<!-- -->
+			<!-- Show SQL Console -->
+			<!-- -->
+			<property name="hibernate.format_sql" value="true" />
+			<property
+				name="javax.persistence.schema-generation.database.action"
+				value="none" />
+		</properties>
 	</persistence-unit>
 </persistence>
