@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import com.deveup.dao.UserDao;
 import com.deveup.entity.User;
+import com.deveup.util.DeveupTable;
 
 @ManagedBean(name = "user")
 @SessionScoped
@@ -19,6 +20,8 @@ public class UserBean implements Serializable {
 
 	private User user;
 	private User userLogin;
+	
+	private DeveupTable<User> table;
 
 	public UserBean() {
 	}
@@ -27,6 +30,7 @@ public class UserBean implements Serializable {
 	public void init() {
 		user = new User();
 		this.userLogin = null;
+		this.table = new DeveupTable<User>();
 	}
 
 	public String login() {
@@ -41,6 +45,8 @@ public class UserBean implements Serializable {
 						this.userLogin = user;
 						user = new User();
 						messageFaces = new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCES", "Te has logeado.");
+						users();
+						return "home";
 					} else {
 						messageFaces = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Datos incorrectos.");
 					}
@@ -57,6 +63,12 @@ public class UserBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, messageFaces);
 		return "login";
 	}
+	
+	public void users() {
+		this.table = new DeveupTable<User>();
+		UserDao dao = new UserDao();
+		table.setEntity(dao.list());
+	}
 
 	public User getUser() {
 		return user;
@@ -64,6 +76,14 @@ public class UserBean implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public DeveupTable<User> getTable() {
+		return table;
+	}
+
+	public void setTable(DeveupTable<User> table) {
+		this.table = table;
 	}
 
 	public static long getSerialversionuid() {

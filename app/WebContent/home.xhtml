@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Clientes</title>
+
+</h:head>
+<h:body
+	style="text-align:center; background:linear-gradient(30deg,  royalblue, indianred, purple);letter-spacing:5px;">
+	<br></br>
+	<br></br>
+
+
+
+
+	<p:dataTable id="sofia-table" widgetVar="sofia-table" var="v"
+		value="#{user.table.entity}"
+		emptyMessage="No se encontro ningun usuario."
+		styleClass="sofia-table 
+					pastley-table-select" sortBy="#{v.id}"
+		selection="#{user.table.select}" rowKey="#{v.id}" rowSelectMode="add"
+		paginator="true" rows="20" scrollable="true"
+		paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} 
+							   	   {PreviousPageLink}    {CurrentPageReport} 
+							       {NextPageLink}        {LastPageLink}"
+		filteredValue="#{user.table.filter}" filterBy="#{user.table.filterBy}"
+		rowsPerPageTemplate="5,10,15,20,50,100" scrollWidth="auto">
+		<f:facet name="header">
+			<p:outputPanel layout="block"
+				styleClass="p-d-flex p-jc-end p-ac-center">
+				<h:outputText value="Buscar:" styleClass="p-mt-1 p-mr-2" />
+				<p:inputText id="globalFilter" onkeyup="PF('sofia-table').filter()" />
+			</p:outputPanel>
+
+		</f:facet>
+
+
+
+		<p:column filterBy="#{v.id}" sortBy="#{v.id}" footerText="ID"
+			filterMatchMode="contains">
+			<f:facet name="header">
+				<h:outputText value="ID" />
+			</f:facet>
+			<h:panelGroup layout="block"
+				styleClass="p-d-flex p-jc-center p-ac-center">
+				<h:outputText value="#{v.id}" />
+			</h:panelGroup>
+		</p:column>
+
+		<!-- EMAIL -->
+		<p:column filterBy="#{v.mail}" footerText="Email"
+			filterMatchMode="contains" sortBy="${v.mail}">
+			<f:facet name="header">
+				<h:outputText value="Email" />
+			</f:facet>
+			<h:panelGroup layout="block"
+				styleClass="p-d-flex p-jc-center p-ac-center p-ai-center p-text-center">
+				<h:outputText value="#{v.mail}" />
+			</h:panelGroup>
+		</p:column>
+
+		<!-- NOMBRE -->
+		<p:column filterBy="#{v.name}" footerText="Nombre"
+			filterMatchMode="contains" sortBy="${v.name}">
+			<f:facet name="header">
+				<h:outputText value="Nombre" />
+			</f:facet>
+			<h:panelGroup layout="block"
+				styleClass="p-d-flex p-jc-center p-ac-center p-ai-center p-text-center">
+				<h:outputText value="#{v.name}" />
+			</h:panelGroup>
+		</p:column>
+
+		<!-- PHOTO -->
+		<p:column filterBy="#{v.photo}" footerText="Photo">
+			<p:graphicImage style="width:100px;height:100px"
+				rendered="#{v.photo != null}" value="#{v.photo}">
+				<f:param name="photo" value="#{v.photo}"></f:param>
+			</p:graphicImage>
+		</p:column>
+	</p:dataTable>
+</h:body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login</title>
+	 
+</h:head>
+<h:body
+	style="text-align:center; background:linear-gradient(30deg,  royalblue, indianred, purple);letter-spacing:5px;">
+	<br></br>
+	<br></br>
+	 
+	<center>
+		<h:panelGroup layout="block"
+			styleClass="sofia-view-login__panel-row-col sofia-view-login__container-login 
+						            sofia-view-login__container-generic sofia-container-login">
+			<h:panelGroup layout="block" styleClass="sofia-view-login___login">
+				<h:form
+					style="align-content: center; background-color: #E9D9D8; width:750px; height:500px;font-style:italic;
+					font-family: sans-serif;letter-spacing:5px; line-height:20px;  padding: 3px 10px;
+  					border: PowderBlue 5px double; border-top-left-radius: 20px;border-bottom-right-radius: 20px; ">
+					<p:growl id="sofia-view-login___login-error" sticky="true"
+						showDetail="true" life="100" />
+					<br></br>
+					 
+					<h:graphicImage src="images/logo.jpg" alt="ho"
+						  />
+
+					<h2>Iniciar Sesión</h2>
+					<h:panelGroup layout="block" styleClass="sofia-container-login-dir">
+
+						<!--       -->
+						<!-- EMAIL -->
+						<!--       -->
+						<h:panelGroup layout="block" styleClass="sofia-effect-transform">
+							<h:outputLabel value="Email"
+								styleClass="sofia-effect-transform__label">
+								<span>*</span>
+							</h:outputLabel>
+							<p:inputText value="#{user.user.mail}" required="true"
+								styleClass="sofia-input-text" 
+								requiredMessage="El campo email no puede estar vacio.">
+							</p:inputText>
+						</h:panelGroup>
+
+						<br></br>
+						 
+						<!--          -->
+						<!-- PASSWORD -->
+						<!--          -->
+						<h:panelGroup layout="block" styleClass="sofia-effect-transform">
+							<h:outputLabel value="Clave"
+								styleClass="sofia-effect-transform__label">
+								<span class="sofia-effect-transform__label-required">*</span>
+							</h:outputLabel>
+							<p:password value="#{user.user.password}" required="true"
+							
+								requiredMessage="El campo clave no puede estar vacio.">
+							</p:password>
+						</h:panelGroup>
+
+						<br></br>
+						
+						 
+
+						<br></br>
+						<!--       -->
+						<!-- LOGIN -->
+						<!--       -->
+						<h:panelGroup layout="block"
+								 >
+								<p:commandButton action="#{user.login()}" value="Login"
+							 	 update="sofia-view-login___login-error"  
+								 />
+						</h:panelGroup>
+
+ 
+					</h:panelGroup>
+				</h:form>
+			</h:panelGroup>
+		</h:panelGroup>
+	</center>
+	<br></br>
+</h:body>
+
+</html>

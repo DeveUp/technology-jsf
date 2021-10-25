@@ -44,9 +44,9 @@ public class User implements Serializable {
 		if(!DeveupValidate.isChain(password)) {
 			message = "El campo clave es obligatorio.";
 		}else {
-			if(password.length() > 3) {
+			if(password.length() < 3) {
 				message = "El campo clave debe tener mas de 3 caracteres.";
-			}
+		}
 		}
 		
 		return message;
