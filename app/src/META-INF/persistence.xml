@@ -11,21 +11,27 @@
 		<!-- -->
 		<properties>
 
+
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/jsf" />
-			<property name="javax.persistence.jdbc.user" value="root" />
+				value="jdbc:mysql://madarme.co:3306/estudiante_31?zeroDateTimeBehavior=convertToNull" />
+			<property name="javax.persistence.jdbc.user"
+				value="estudiante_31" />
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.password"
+				value="pCPstUBGOM" />
+
+
 
 			<!-- -->
 			<!-- DB Dialect -->
 			<!-- -->
-			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.jdbc.Driver" />
+		
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MariaDB53Dialect" />
 
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.enable_lazy_load_no_trans"
-				value="true" />
+			
 
 			<!-- -->
 			<!-- Show SQL Console -->
