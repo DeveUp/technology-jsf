@@ -64,6 +64,15 @@ public class UserBean implements Serializable {
 		return "login";
 	}
 	
+	public String close() {
+		User aux = this.userLogin;
+		if (aux != null) {
+			this.init();
+			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		}
+		return "login";
+	}
+	
 	public void users() {
 		this.table = new DeveupTable<User>();
 		UserDao dao = new UserDao();
@@ -80,6 +89,14 @@ public class UserBean implements Serializable {
 
 	public DeveupTable<User> getTable() {
 		return table;
+	}
+
+	public User getUserLogin() {
+		return userLogin;
+	}
+
+	public void setUserLogin(User userLogin) {
+		this.userLogin = userLogin;
 	}
 
 	public void setTable(DeveupTable<User> table) {

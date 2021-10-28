@@ -7,6 +7,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{security.check()}" />
+	</f:metadata>
 	<title>Clientes</title>
 	<h:outputStylesheet library="css" name="primeflex.css" />
 </h:head>
@@ -15,10 +18,16 @@
 	<br></br>
 	<br></br>
 	<h:form>
+		<h:panelGroup layout="block">
+			<p:commandLink action="#{user.close()}"
+				style="color: #daa520;font-size: 1em; background-color: #FFF; padding: .5em; border-radius: 1em" value="Cerrar Sesión">
+			</p:commandLink>
+		</h:panelGroup>
+
 		<p:dataTable id="sofia-table" widgetVar="sofia-table" var="v"
 			value="#{user.table.entity}"
 			emptyMessage="No se encontro ningun usuario."
-			styleClass="sofia-table" paginator="true" rows="20" scrollable="true"
+			styleClass="sofia-table p-mt-4" paginator="true" rows="20" scrollable="true"
 			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} 
 						   {PreviousPageLink}    {CurrentPageReport} 
 						   {NextPageLink}        {LastPageLink}"
@@ -46,7 +55,8 @@
 
 			<!-- EMAIL -->
 			<p:column filterBy="#{v.mail}" footerText="Email"
-				filterMatchMode="contains" sortBy="${v.mail}" styleClass="p-text-center">
+				filterMatchMode="contains" sortBy="${v.mail}"
+				styleClass="p-text-center">
 				<f:facet name="header">
 					<h:outputText value="Email" />
 				</f:facet>
@@ -58,7 +68,8 @@
 
 			<!-- NOMBRE -->
 			<p:column filterBy="#{v.name}" footerText="Nombre"
-				filterMatchMode="contains" sortBy="${v.name}" styleClass="p-text-center">
+				filterMatchMode="contains" sortBy="${v.name}"
+				styleClass="p-text-center">
 				<f:facet name="header">
 					<h:outputText value="Nombre" />
 				</f:facet>
@@ -69,7 +80,8 @@
 			</p:column>
 
 			<!-- PHOTO -->
-			<p:column footerText="Foto" headerText="Foto" styleClass="p-text-center">
+			<p:column footerText="Foto" headerText="Foto"
+				styleClass="p-text-center">
 				<p:graphicImage style="width:50px;height:50px"
 					rendered="#{v.photo != null}" value="#{v.photo}">
 					<f:param name="photo" value="#{v.photo}"></f:param>
