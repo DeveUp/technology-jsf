@@ -24,7 +24,6 @@ public class DeveupTable<T> implements Serializable{
 	
 	public DeveupTable(List<T> entity) {
 		this.entity = entity;
-		this.filter = new ArrayList<T>();
 	}
 
 	public List<T> getEntity() {

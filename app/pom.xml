@@ -6,6 +6,7 @@
 	<artifactId>app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -17,6 +18,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.3</version>
@@ -24,38 +26,23 @@
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
-	<!-- -->
-	<!-- Dependencies -->
-	<!-- -->
+
 	<dependencies>
-		<!-- -->
-		<!-- MySql -->
-		<!-- -->
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.27</version>
 		</dependency>
 
-		<!-- -->
-		<!-- JPA -->
-		<!-- -->
-
-		<!-- -->
-		<!-- Hibernate -->
-		<!-- -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.1.Final</version>
 		</dependency>
-
-		<!-- -->
-		<!-- MariaDB -->
-		<!-- -->
+		
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
@@ -69,9 +56,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- -->
-		<!-- Faces -->
-		<!-- -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
@@ -93,24 +77,14 @@
 			<version>10.0.0-RC1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.primefaces.extensions</groupId>
-			<artifactId>all-themes</artifactId>
-			<version>1.0.8</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>font-awesome</artifactId>
-			<version>5.12.0</version>
-		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
 	</dependencies>
+	
 	<properties>
   		<sonar.organization>deveup</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
